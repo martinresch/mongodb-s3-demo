@@ -1,0 +1,4 @@
+# BIC;IBAN;Mandatsreferenz;Ausstellungsdatum;Name;Vorname;Verwendungszweck1;Verwendungszweck2;Betrag
+ABCDEBANK01;DE57100200010099887701;TUS1980098701;01.01.2001;Albert;Alles;5. Quartal anno 2050;Beitrag TuS Dropskicker;20,00
+ABCDEBANK02;DE65100200020099887702;TUS1980098702;01.02.2002;Bertolt;Brecht;5. Quartal anno 2050;Beitrag TuS Dropskicker;21,01    
+ABCDEBANK03;DE73100200030099887703;TUS1980098703;01.03.2003;Carl;Caesar;5. Quartal anno 2050;Beitrag TuS Dropskicker;22,02
