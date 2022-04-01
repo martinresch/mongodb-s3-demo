@@ -1,7 +1,11 @@
 package de.lonetech.mongodbopenshiftdemo.model;
 
 import java.util.Date;
+import java.util.UUID;
 
+import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
+import com.opencsv.bean.CsvNumber;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,23 +14,42 @@ public class Transaction
 {
   @Id
   private String id;
-  
+
+  @CsvBindByPosition(position = 0)
   private String bic;
+  
+  @CsvBindByPosition(position = 1)
   private String iban;
+  
+  @CsvBindByPosition(position = 2)
   private String reference;
+  
+  @CsvDate(value = "dd.MM.yyyy")
+  @CsvBindByPosition(position = 3)
   private Date date;
+  
+  @CsvBindByPosition(position = 4)
   private String firstName;
+  
+  @CsvBindByPosition(position = 5)
   private String lastName;
+  
+  @CsvBindByPosition(position = 6)
   private String purpose1;
+  
+  @CsvBindByPosition(position = 7)
   private String purpose2;
+  
+  @CsvNumber("#,##")
+  @CsvBindByPosition(position = 8)
   private Double amount;
 
   public Transaction()
   {
+    id = UUID.randomUUID().toString();
   }
 
-  public Transaction(String aId,
-                     String aBic,
+  public Transaction(String aBic,
                      String aIban,
                      String aReference,
                      Date aDate,
@@ -36,7 +59,7 @@ public class Transaction
                      String aPurpose2,
                      Double aAmount)
   {
-    id = aId;
+    this();
     bic = aBic;
     iban = aIban;
     reference = aReference;
@@ -46,6 +69,11 @@ public class Transaction
     purpose1 = aPurpose1;
     purpose2 = aPurpose2;
     amount = aAmount;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public String getBic()
