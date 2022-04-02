@@ -37,7 +37,7 @@ public class TransactionService
     ColumnPositionMappingStrategy<Transaction> ms = new ColumnPositionMappingStrategy<>();
     ms.setType(Transaction.class);
 
-    try(Reader reader = new InputStreamReader(s3Client.getContentAsStream("foo/bar.csv"))) {
+    try(Reader reader = new InputStreamReader(s3Client.getContentAsStream("csv/bar.csv"))) {
       CsvToBean<Transaction> cb = new CsvToBeanBuilder<Transaction>(reader)
         .withType(Transaction.class)
         .withMappingStrategy(ms)
