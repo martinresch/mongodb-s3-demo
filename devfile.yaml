@@ -17,7 +17,7 @@ parent:
 components:
   - name: outerloop-build
     image:
-      imageName: mongo-s3-demo-image:latest
+      imageName: mongodb-s3-demo-image:latest
       dockerfile:
         uri: docker/Dockerfile
         buildContext: .

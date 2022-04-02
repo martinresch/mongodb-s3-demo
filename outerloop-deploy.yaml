@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: mongo-s3-demo
+  name: mongodb-s3-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo-s3-demo-app
+      app: mongodb-s3-demo-app
   template:
     metadata:
       labels:
         app: java-springboot-app
     spec:
       containers:
-        - name: mongo-s3-demo
-          image: mongo-s3-demo-image:latest
+        - name: mongdbo-s3-demo
+          image: mongodb-s3-demo-image:latest
           ports:
             - name: http
               containerPort: 8081
