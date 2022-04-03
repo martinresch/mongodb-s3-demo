@@ -3,7 +3,6 @@ package de.lonetech.mongodbopenshiftdemo.service;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Date;
 import java.util.List;
 
 import com.opencsv.bean.ColumnPositionMappingStrategy;
@@ -24,20 +23,20 @@ public class TransactionService
   @Autowired
   S3Client s3Client;
 
-  public void transform()
+  public void transform(String path)
     throws IOException
   {
-    List<Transaction> transactions = getCsvData();
+    List<Transaction> transactions = getCsvData(path);
     transactionRepo.saveAll(transactions);
   }
 
-  List<Transaction> getCsvData()
+  List<Transaction> getCsvData(String aPath)
     throws IOException
   {
     ColumnPositionMappingStrategy<Transaction> ms = new ColumnPositionMappingStrategy<>();
     ms.setType(Transaction.class);
 
-    try(Reader reader = new InputStreamReader(s3Client.getContentAsStream("csv/bar.csv"))) {
+    try(Reader reader = new InputStreamReader(s3Client.getContentAsStream(aPath))) {
       CsvToBean<Transaction> cb = new CsvToBeanBuilder<Transaction>(reader)
         .withType(Transaction.class)
         .withMappingStrategy(ms)
@@ -48,22 +47,9 @@ public class TransactionService
     }
   }
 
-  public void createTransactions()
+  public List<Transaction> findAll()
+    throws IOException
   {
-    System.out.println("Data creation started...");
-    transactionRepo.save(new Transaction("bic",
-                                         "iban",
-                                         "reference",
-                                         new Date(),
-                                         "Max",
-                                         "Mustermann",
-                                         "purp1",
-                                         "purp2",
-                                         123.43));
-    //    groceryItemRepo.save(new GroceryItem("Kodo Millet", "XYZ Kodo Millet healthy", 2, "millets"));
-    //    groceryItemRepo.save(new GroceryItem("Dried Red Chilli", "Dried Whole Red Chilli", 2, "spices"));
-    //    groceryItemRepo.save(new GroceryItem("Pearl Millet", "Healthy Pearl Millet", 1, "millets"));
-    //    groceryItemRepo.save(new GroceryItem("Cheese Crackers", "Bonny Cheese Crackers Plain", 6, "snacks"));
-    System.out.println("Data creation complete...");
+    return transactionRepo.findAll();
   }
 }

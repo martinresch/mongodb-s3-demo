@@ -22,7 +22,7 @@ class TransactionServiceTest
   void getCsvData()
     throws IOException
   {
-    List<Transaction> result = transactionService.getCsvData();
+    List<Transaction> result = transactionService.getCsvData("csv/bar.csv");
     assertEquals(3, result.size());
   }
 }

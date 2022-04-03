@@ -48,29 +48,6 @@ public class Transaction
   {
     id = UUID.randomUUID().toString();
   }
-
-  public Transaction(String aBic,
-                     String aIban,
-                     String aReference,
-                     Date aDate,
-                     String aFirstName,
-                     String aLastName,
-                     String aPurpose1,
-                     String aPurpose2,
-                     Double aAmount)
-  {
-    this();
-    bic = aBic;
-    iban = aIban;
-    reference = aReference;
-    date = aDate;
-    firstName = aFirstName;
-    lastName = aLastName;
-    purpose1 = aPurpose1;
-    purpose2 = aPurpose2;
-    amount = aAmount;
-  }
-
   public String getId()
   {
     return id;

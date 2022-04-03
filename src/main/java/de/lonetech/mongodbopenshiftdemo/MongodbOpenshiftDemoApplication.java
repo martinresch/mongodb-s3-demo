@@ -2,7 +2,6 @@ package de.lonetech.mongodbopenshiftdemo;
 
 import de.lonetech.mongodbopenshiftdemo.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -10,7 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication
 @EnableMongoRepositories
 public class MongodbOpenshiftDemoApplication
-  implements CommandLineRunner
+//  implements CommandLineRunner
 {
   @Autowired
   TransactionService transactionService;
@@ -20,11 +19,11 @@ public class MongodbOpenshiftDemoApplication
     SpringApplication.run(MongodbOpenshiftDemoApplication.class, args);
   }
 
-  @Override
-  public void run(String... args)
-    throws Exception
-  {
-//    transactionService.createTransactions();
-    transactionService.transform();
-  }
+//  @Override
+//  public void run(String... args)
+//    throws Exception
+//  {
+////    transactionService.createTransactions();
+////    transactionService.transform("csv/bar.csv");
+//  }
 }
