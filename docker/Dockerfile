@@ -20,7 +20,7 @@ RUN mvn dependency:go-offline
 COPY src src
 RUN mvn package -Dmaven.test.skip=true
 
-FROM openjdk:11-jdk
+FROM registry.redhat.io/openjdk/openjdk-11-rhel7
 COPY --from=0 /build/target/mongodb-openshift-demo-0.0.1-SNAPSHOT.jar /app/target/mongodb-openshift-demo-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8081
