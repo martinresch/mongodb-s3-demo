@@ -1,5 +1,6 @@
 FROM registry.redhat.io/codeready-workspaces/plugin-java11-rhel8 AS builder
 
+USER root
 WORKDIR /build
 
 # Build dependency offline to streamline build
